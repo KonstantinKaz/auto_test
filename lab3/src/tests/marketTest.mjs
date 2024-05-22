@@ -111,6 +111,7 @@ describe('Yandex Market Test', function () {
 			throw error
 		}
 	})
+  
 
 	it('should navigate to favorites and verify page is true', async function () {
 		const testName = this.test.fullTitle()
