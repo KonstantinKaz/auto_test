@@ -8,7 +8,7 @@ export class GroupPage extends BasePage {
 		this.searchField = By.xpath("//input[@placeholder='группа ...']")
 		this.searchResultLink = By.xpath('//div[contains(text(), "221-322")]')
 		this.scheduleTable = By.css('.schedule-week')
-		this.currentDay = By.css('.schedule-day_today')
+		this.currentDay = By.css('.schedule-day_today > .schedule-day__title')
 	}
 
 	async type(element, text) {
@@ -34,29 +34,28 @@ export class GroupPage extends BasePage {
 
 	async isCurrentDayHighlighted() {
 		const daysOfWeek = [
+			'воскресенье',
 			'понедельник',
 			'вторник',
 			'среда',
 			'четверг',
 			'пятница',
 			'суббота',
-			'воскресенье',
 		]
 
-		const todayDayOfWeek = new Date().getDay()
+		const today = new Date()
+		const todayDayOfWeek = today.getDay()
 
 		if (todayDayOfWeek === 0) {
 			try {
 				const currentDayElement = await this.getElement(this.currentDay)
-				return !(await currentDayElement.isDisplayed())
+				return !currentDayElement.isDisplayed()
 			} catch (e) {
 				return true
 			}
 		}
-
 		const currentDayElement = await this.getElement(this.currentDay)
-		const highlightedDayText = (await currentDayElement.getText()).toLowerCase()
-
-		return highlightedDayText === daysOfWeek[todayDayOfWeek - 1]
+		const highlightedDayText = await currentDayElement.getText()
+		return highlightedDayText.toLowerCase() === daysOfWeek[todayDayOfWeek]
 	}
 }
