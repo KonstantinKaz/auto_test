@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { Browser, Builder } from 'selenium-webdriver'
-import TodoPage from '../pages/todoPage.mjs'
+import TodoPage from '../pages/todoPage_lab1.mjs'
 
 describe('LambdaTest ToDo App', function () {
 	let driver
@@ -9,7 +9,7 @@ describe('LambdaTest ToDo App', function () {
 	let remaining = total
 
 	before(async function () {
-		driver = await new Builder().forBrowser(Browser.CHROME).build() // Added 'await' here
+		driver = await new Builder().forBrowser(Browser.CHROME).build()
 		todoPage = new TodoPage(driver)
 		await todoPage.open()
 		await todoPage.maximizeWindow()
