@@ -6,7 +6,7 @@ export class GroupPage extends BasePage {
 	constructor(driver) {
 		super(driver)
 		this.searchField = By.xpath("//input[@placeholder='группа ...']")
-		this.searchResultLink = By.xpath('//div[contains(text(), "221-321")][1]')
+		this.searchResultLink = By.xpath('//div[contains(text(), "221-322")]')
 		this.scheduleTable = By.css('.schedule-week')
 		this.currentDay = By.css('.schedule-day_today > .schedule-day__title')
 	}

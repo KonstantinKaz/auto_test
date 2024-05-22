@@ -7,6 +7,7 @@ import { HomePage } from '../pages/homePage_lab2.mjs'
 import { SchedulePage } from '../pages/schedulePage_lab2.mjs'
 import { takeScreenshot } from '../utils/screenshot.mjs'
 
+
 describe('Mospolytech Timetable Test', function () {
 	this.timeout(60000)
 	let driver
